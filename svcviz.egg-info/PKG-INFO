@@ -6,5 +6,6 @@ Home-page: https://github.com/marquisvictor/svc-visualizer
 Author: Victor Irekponor, Taylor Oshan
 Author-email: vireks@umd.edu
 Classifier: Programming Language :: Python :: 3
-Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
 Classifier: Operating System :: OS Independent
+License-File: LICENSE
