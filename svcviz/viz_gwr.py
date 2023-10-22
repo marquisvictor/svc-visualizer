@@ -187,15 +187,16 @@ def compare_conf(df_geo, est1, stderr1, est2, stderr2, var1,
     data_df[var1] = ((model_1['lower_'+var1] <= data['upper_'+var2]) &
                      (model_1['upper_'+var1] >= data['lower_'+var2]))
     
-    fig, ax = plt.subplots(figsize=(15, 10))
-    data_df[data_df[var1]].plot(ax=ax, color='yellow', edgecolor='blue', linewidth=.3, label='Overlap')
-    data_df[~data_df[var1]].plot(ax=ax, color='white', edgecolor='black', label='Overlap')
+    fig, ax = plt.subplots(figsize=(12, 10))
+    data_df[data_df[var1]].plot(ax=ax, color='#e1ad01', edgecolor='grey', linewidth=.1, label='Overlap')
+    data_df[~data_df[var1]].plot(ax=ax, color='grey', edgecolor='black', linewidth=1.2, label='Overlap')
     
-    ax.set_title(f'{round(data_df[var1].sum()/len(data_df)*100, 2)}% of the confidence intervals of both models overlap. {round(100-(data_df[var1].sum()/len(data_df)*100), 2)}% do not', fontsize=16)
+    ax.set_title(f' Model 1 vs Model 2 Confidence Interval Agreement \n {round(data_df[var1].sum()/len(data_df)*100, 2)}% of the confidence intervals of both models overlap. {round(100-(data_df[var1].sum()/len(data_df)*100), 2)}% do not', fontsize=12);
 
 
 
-def compare_surfaces(data, var1, var2, var1_t, var2_t, use_tvalues=False, savefig=None):
+
+def _compare_surfaces(data, var1, var2, var1_t, var2_t, use_tvalues=False, savefig=None):
     '''
     Function that creates comparative visualization of GWR and MGWR surfaces.
     Parameters
@@ -328,5 +329,5 @@ def compare_two_surf(df_geo, est1, stderr1, est2, stderr2, var1,
     t_var1 = 't_'+var1
     t_var2 = 't_'+var2
 
-    compare_surfaces(data_df, var1, var2, t_var1, 
+    _compare_surfaces(data_df, var1, var2, t_var1, 
                      t_var2, use_tvalues=use_tvalues)
